@@ -24,5 +24,53 @@ namespace IT008_DoAnCuoiKi
         {
             InitializeComponent();
         }
+
+        private void nav_library_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nav_library_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Hello", "Thong bao", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void wa_close_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void wa_maxmin_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            switch (WindowState)
+            {
+                case (WindowState.Maximized):
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    ResizeMode = ResizeMode.NoResize;
+                    WindowState = WindowState.Normal;
+                    break;
+                case (WindowState.Normal):
+                    ResizeMode = ResizeMode.NoResize;
+                    WindowState = WindowState.Maximized;
+                    break;
+            }
+        }
+
+        private void wa_hide_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void search_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void search_tb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(search_tb.Text == "What do you want to listen to?")
+            {
+                search_tb.Text = "";
+            }
+        }
     }
 }
