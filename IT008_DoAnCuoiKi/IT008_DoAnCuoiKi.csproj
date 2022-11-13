@@ -40,6 +40,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,16 +64,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Controls\ActionButton.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\NavButton.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CreatePlaylist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LikedSongs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\YourLibrary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\CreatePlaylist.xaml.cs">
+      <DependentUpon>CreatePlaylist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LikedSongs.xaml.cs">
+      <DependentUpon>LikedSongs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\YourLibrary.xaml.cs">
+      <DependentUpon>YourLibrary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,10 +128,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="assets\icons\spotify.png" />
+    <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="fonts\" />
+    <Content Include="Assets\Icons\About.svg" />
+    <Content Include="Assets\Icons\Add to playlist.svg" />
+    <Content Include="Assets\Icons\Add to queue.svg" />
+    <Content Include="Assets\Icons\Connect to a device.svg" />
+    <Content Include="Assets\Icons\Full screen.svg" />
+    <Content Include="Assets\Icons\Go to radio.svg" />
+    <Content Include="Assets\Icons\Hide song.svg" />
+    <Content Include="Assets\Icons\Like.svg" />
+    <Content Include="Assets\Icons\LikeFill.svg" />
+    <Content Include="Assets\Icons\Lyrics.svg" />
+    <Content Include="Assets\Icons\Next.svg" />
+    <Content Include="Assets\Icons\Pause.svg" />
+    <Content Include="Assets\Icons\Previous.svg" />
+    <Content Include="Assets\Icons\Queue.svg" />
+    <Content Include="Assets\Icons\Repeat.svg" />
+    <Content Include="Assets\Icons\Report abuse.svg" />
+    <Content Include="Assets\Icons\Share.svg" />
+    <Content Include="Assets\Icons\Shuffle.svg" />
+    <Content Include="Assets\Icons\Sleep timer.svg" />
+    <Content Include="Assets\Icons\Song credits.svg" />
+    <Resource Include="Assets\Icons\spotify.png" />
+    <Content Include="Assets\Icons\View album.svg" />
+    <Content Include="Assets\Icons\View artist.svg" />
+    <Content Include="Assets\Icons\Volume.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

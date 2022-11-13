@@ -25,16 +25,6 @@ namespace IT008_DoAnCuoiKi
             InitializeComponent();
         }
 
-        private void nav_library_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void nav_library_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Hello", "Thong bao", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
         private void wa_close_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
@@ -67,10 +57,21 @@ namespace IT008_DoAnCuoiKi
 
         private void search_tb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(search_tb.Text == "What do you want to listen to?")
-            {
+            if (search_tb.Text == "What do you want to listen to?")
                 search_tb.Text = "";
-            }
         }
+
+        private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = sidebar.SelectedItem as NavButton;
+            navframe.Navigate(selected.Navlink);
+        }
+
+        private void search_tb_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (search_tb.Text == "")
+                search_tb.Text = "What do you want to listen to?";
+        }
+
     }
 }
