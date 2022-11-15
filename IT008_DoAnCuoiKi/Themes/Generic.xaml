@@ -35,13 +35,13 @@
     </Style>
 
     <Style TargetType="{x:Type local:ActionButton}">
-        <Setter Property="HorizontalAlignment" Value="Center" />
+        <!--<Setter Property="HorizontalAlignment" Value="Center" />-->
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Opacity" Value="0.7" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ActionButton}">
-                    <Path x:Name="action_icon" Height="20" Width="20" Stretch="Uniform" Fill="Transparent" Data="{TemplateBinding Icon}" />
+                    <Path x:Name="action_icon" Height="20" Width="20" Fill="Transparent" Data="{TemplateBinding Icon}" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Opacity" TargetName="action_icon" Value="1" />
