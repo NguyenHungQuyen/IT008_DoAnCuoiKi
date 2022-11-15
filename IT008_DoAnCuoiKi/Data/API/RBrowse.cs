@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace IT008_DoAnCuoiKi.Data.API
 {
-    internal class Playlist
+    internal class RBrowse
     {
+
     }
 }

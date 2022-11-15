@@ -3,41 +3,58 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:IT008_DoAnCuoiKi.page"
+      xmlns:local="clr-namespace:IT008_DoAnCuoiKi.page" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LikedSongs">
 
-    <Grid Background="#8D72E1" UseLayoutRounding="True" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Margin="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="180"></ColumnDefinition>
-                <ColumnDefinition Width="16"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid VerticalAlignment="Center" Height="180" UseLayoutRounding="True" Background="BlueViolet" HorizontalAlignment="Left" Width="180">
-                <Path Fill="White" Stretch="Uniform" Width="80" Height="80" Data="M448.069,57.839c-72.675-23.562-150.781,15.759-175.721,87.898C247.41,73.522,169.303,34.277,96.628,57.839
-		C23.111,81.784-16.975,160.885,6.894,234.708c22.95,70.38,235.773,258.876,263.006,258.876
-		c27.234,0,244.801-188.267,267.751-258.876C561.595,160.732,521.509,81.631,448.069,57.839z"/>
+    <Grid>
+        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Grid UseLayoutRounding="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="300"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#8D72E1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="16"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid VerticalAlignment="Bottom" Height="180" UseLayoutRounding="True" Background="BlueViolet" HorizontalAlignment="Left" Width="180" Margin="10,0,0,10">
+                            <ui:SymbolIcon Symbol="Heart48" FontSize="80" Filled="True"/>
+                        </Grid>
+
+                        <StackPanel Grid.Column="2" VerticalAlignment="Bottom" Height="180">
+                            <StackPanel VerticalAlignment="Center" Margin="0,40,0,0">
+                                <TextBlock FontWeight="DemiBold" Text="PLAYLIST" Foreground="White" />
+                                <TextBlock FontSize="50" FontWeight="Bold" Text="Liked Songs" Foreground="White" />
+                            </StackPanel>
+                            <WrapPanel Margin="0,20,0,0">
+                                <Image Source="/Assets/Icons/spotify.png" Width="20" Height="20" HorizontalAlignment="Left" />
+                                <TextBlock Margin="5,0,0,0" FontWeight="Bold" Text="Account" Foreground="White" VerticalAlignment="Center" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </Grid>
+                <Grid Background="Transparent" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <ui:SymbolIcon Symbol="MusicNote120" Grid.Row="0" FontSize="46" Margin="0,30,0,0" />
+                    <TextBlock Text="Songs you like will appear here" Foreground="White" FontWeight="Bold" FontSize="26" Grid.Row="1" TextAlignment="Center" Margin="0,30,0,0" />
+                    <TextBlock Text="Save songs by tapping the heart icon." Foreground="White" FontWeight="DemiBold" FontSize="13" Grid.Row="2" TextAlignment="Center" Margin="0,40,0,0" />
+                    <ui:Button Grid.Row="3" HorizontalAlignment="Center" Background="#fff" Foreground="#000" FontSize="12" Padding="14, 8" FontWeight="DemiBold" Margin="0,40,0,0">
+                        Find Songs
+                    </ui:Button>
+                </Grid>
             </Grid>
-
-            <StackPanel Grid.Column="2" VerticalAlignment="Center" Height="180">
-                <StackPanel VerticalAlignment="Center" Margin="0,40,0,0">
-                    <TextBlock FontWeight="DemiBold" Text="PLAYLIST" Foreground="White" />
-                    <TextBlock FontSize="44" FontWeight="Bold" Text="Liked Songs" Foreground="White" />
-                </StackPanel>
-                <WrapPanel Margin="0,20,0,0">
-                    <Image Source="/Assets/Icons/spotify.png" Width="20" Height="20" HorizontalAlignment="Left" />
-                    <TextBlock Margin="5,0,0,0" FontWeight="Bold" Text="Account" Foreground="White" VerticalAlignment="Center" />
-                </WrapPanel>
-            </StackPanel>
-        </Grid>
-        <Grid Background="#3F3B6C" Grid.Row="1">
-
-        </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
