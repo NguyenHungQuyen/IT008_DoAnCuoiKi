@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace IT008_DoAnCuoiKi
         public MainWindow()
         {
             InitializeComponent();
+            nav_home.IsSelected= true;
         }
 
         private void wa_close_PreviewMouseDown(object sender, MouseButtonEventArgs e)
