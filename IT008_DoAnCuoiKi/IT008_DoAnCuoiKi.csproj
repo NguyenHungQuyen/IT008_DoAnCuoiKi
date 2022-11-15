@@ -70,6 +70,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\NavButton.cs" />
+    <Compile Include="Data\API\Album.cs" />
+    <Compile Include="Data\API\Artist.cs" />
+    <Compile Include="Data\API\Follow.cs" />
+    <Compile Include="Data\API\Playlist.cs" />
+    <Compile Include="Data\API\Search.cs" />
+    <Compile Include="Data\Models\Albums.cs" />
+    <Compile Include="Data\Models\Artists.cs" />
+    <Compile Include="Data\Models\CurrentUser.cs" />
+    <Compile Include="Data\Models\Playlists.cs" />
+    <Compile Include="Data\Models\PodcastsAndShows.cs" />
+    <Compile Include="Data\Models\Songs.cs" />
+    <Compile Include="Data\Models\Profile.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -78,7 +90,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LikedSongs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -95,8 +115,14 @@
     <Compile Include="Pages\CreatePlaylist.xaml.cs">
       <DependentUpon>CreatePlaylist.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LikedSongs.xaml.cs">
       <DependentUpon>LikedSongs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\YourLibrary.xaml.cs">
       <DependentUpon>YourLibrary.xaml</DependentUpon>
@@ -138,6 +164,8 @@
     <Content Include="Assets\Icons\Full screen.svg" />
     <Content Include="Assets\Icons\Go to radio.svg" />
     <Content Include="Assets\Icons\Hide song.svg" />
+    <Content Include="Assets\Icons\house-door-fill.svg" />
+    <Content Include="Assets\Icons\house-door.svg" />
     <Content Include="Assets\Icons\Like.svg" />
     <Content Include="Assets\Icons\LikeFill.svg" />
     <Content Include="Assets\Icons\Lyrics.svg" />
@@ -147,6 +175,7 @@
     <Content Include="Assets\Icons\Queue.svg" />
     <Content Include="Assets\Icons\Repeat.svg" />
     <Content Include="Assets\Icons\Report abuse.svg" />
+    <Content Include="Assets\Icons\search.svg" />
     <Content Include="Assets\Icons\Share.svg" />
     <Content Include="Assets\Icons\Shuffle.svg" />
     <Content Include="Assets\Icons\Sleep timer.svg" />
