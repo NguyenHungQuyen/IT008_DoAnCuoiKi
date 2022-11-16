@@ -26,6 +26,7 @@ namespace IT008_DoAnCuoiKi.Pages
         public Search()
         {
             InitializeComponent();
+            
         }
 
 

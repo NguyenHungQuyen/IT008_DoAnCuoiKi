@@ -28,17 +28,17 @@
         </WrapPanel>
 
         <TextBlock Grid.Row="2" Text="Browse all" FontSize="20" FontWeight="Bold" Foreground="#fff" HorizontalAlignment="Left"/>
-        <ListBox x:Name="SearchResult" Grid.Row="3" HorizontalContentAlignment="Left" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
-            <ListBox.ItemsPanel>
+        <ListView x:Name="SearchResult" Grid.Row="3" HorizontalContentAlignment="Left" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
+            <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel></WrapPanel>
                 </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+            </ListView.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <ui:Card>
-                        <StackPanel Uid="{Binding ID}" Tag="{Binding ID}" ToolTip="{Binding ID}">
-                            <Image Source="{Binding ArtistImage}" Width="200" Height="200" />
+                    <ui:Card Padding="0" ClipToBounds="True">
+                        <StackPanel Uid="{Binding ID}" Tag="{Binding ID}" ToolTip="{Binding ID}" ClipToBounds="True">
+                            <Image Source="{Binding ArtistImage}" Width="200" Height="200" ClipToBounds="True"/>
                             <TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding Popularity}" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding Followers}" TextWrapping="Wrap"/>
@@ -47,6 +47,6 @@
                     </ui:Card>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+        </ListView>
     </Grid>
 </Page>
