@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IT008_DoAnCuoiKi.Data.API
+namespace IT008_DoAnCuoiKi.Data.Models
 {
-    internal class Search
+    internal class MSongs
     {
     }
 }

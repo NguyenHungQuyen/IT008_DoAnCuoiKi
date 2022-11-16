@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IT008_DoAnCuoiKi.Data.Models
+namespace IT008_DoAnCuoiKi.Data.API
 {
-    internal class Songs
+    internal class RAlbum
     {
     }
 }

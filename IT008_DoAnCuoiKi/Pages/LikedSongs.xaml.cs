@@ -24,5 +24,10 @@ namespace IT008_DoAnCuoiKi.page
         {
             InitializeComponent();
         }
+
+        private void liked_sóng_find_songs_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
