@@ -142,6 +142,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Queue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
@@ -150,6 +152,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\YourLibrary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayListThing\PlayListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayListThing\ViewAlbum.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayListThing\ViewArtists.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +190,16 @@
     </Compile>
     <Compile Include="Pages\YourLibrary.xaml.cs">
       <DependentUpon>YourLibrary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayListThing\PlayListInformation.cs" />
+    <Compile Include="PlayListThing\PlayListPage.xaml.cs">
+      <DependentUpon>PlayListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayListThing\ViewAlbum.xaml.cs">
+      <DependentUpon>ViewAlbum.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayListThing\ViewArtists.xaml.cs">
+      <DependentUpon>ViewArtists.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -230,6 +254,8 @@
     <Content Include="Assets\Icons\Shuffle.svg" />
     <Content Include="Assets\Icons\Sleep timer.svg" />
     <Content Include="Assets\Icons\Song credits.svg" />
+    <Resource Include="PlayListThing\MusicNoteIcon.png" />
+    <Resource Include="PlayListThing\spotify.png" />
     <Resource Include="Color\ColorHex.txt" />
     <Resource Include="Assets\Icons\spotify.png" />
     <Content Include="Assets\Icons\View album.svg" />
