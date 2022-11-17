@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IT008_DoAnCuoiKi.page
+namespace IT008_DoAnCuoiKi.Pages.LikedSongsPage
 {
     /// <summary>
     /// Interaction logic for LikedSongs.xaml
@@ -25,9 +25,10 @@ namespace IT008_DoAnCuoiKi.page
             InitializeComponent();
         }
 
-        private void liked_sóng_find_songs_btn_Click(object sender, RoutedEventArgs e)
+        private void liked_songs_find_songs_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate("/Pages/Search.xaml");
+            MessageBox.Show("JHelo");
         }
     }
 }

@@ -43,6 +43,7 @@
                             <TextBlock Text="{Binding Popularity}" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding Followers}" TextWrapping="Wrap"/>
                             <TextBlock Text="{Binding ID}" TextWrapping="Wrap"/>
+                            <ui:Hyperlink NavigateUri="{Binding External_Url}">Spotify Profile</ui:Hyperlink>
                         </StackPanel>
                     </ui:Card>
                 </DataTemplate>

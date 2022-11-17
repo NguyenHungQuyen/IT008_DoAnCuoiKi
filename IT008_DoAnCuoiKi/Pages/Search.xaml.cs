@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static IT008_DoAnCuoiKi.Data.Models.MSearch;
+using IT008_DoAnCuoiKi.Data.Models;
 
 namespace IT008_DoAnCuoiKi.Pages
 {
@@ -35,21 +36,27 @@ namespace IT008_DoAnCuoiKi.Pages
             if (search_tb.Text == string.Empty)
             {
                 MessageBox.Show("Please type something!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                SearchResult = null;
+                SearchResult.ItemsSource = null;
                 return;
             }
             ComboBoxItem dropdown_item = dropdown.SelectedItem as ComboBoxItem;
             string type = dropdown_item.Content.ToString().ToLower();
+            if(type.CompareTo("choose type") == 0)
+            {
+                MessageBox.Show("Please choose type!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                SearchResult.ItemsSource = null;
+                return;
+            }
             SpotifyResult res = RSearch.SearchByType(search_tb.Text, type);
             if (res != null)
             {
                 switch (type)
                 {
                     case "artist":
-                        var listArtist = new List<RArtist>();
+                        var listArtist = new List<MArtists>();
                         foreach (var item in res.artists.items)
                         {
-                            listArtist.Add(new RArtist()
+                            listArtist.Add(new MArtists()
                             {
                                 ID = item.id,
                                 Name = item.name,
@@ -65,6 +72,11 @@ namespace IT008_DoAnCuoiKi.Pages
                         SearchResult.ItemsSource = listArtist;
                         break;
                     case "track":
+                        var listTrack = new List<MTracks>();
+                        //foreach (var item in res?.tracks.items)
+                        //{
+
+                        //}
                         break;
                 }
             }
