@@ -73,10 +73,10 @@ namespace IT008_DoAnCuoiKi.Pages
                         break;
                     case "track":
                         var listTrack = new List<MTracks>();
-                        foreach (var item in res?.tracks.items)
-                        {
+                        //foreach (var item in res?.tracks.items)
+                        //{
 
-                        }
+                        //}
                         break;
                 }
             }
