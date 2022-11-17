@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IT008_DoAnCuoiKi.page
+namespace IT008_DoAnCuoiKi.PlayListThing
 {
     /// <summary>
-    /// Interaction logic for LikedSongs.xaml
+    /// Interaction logic for ViewAlbum.xaml
     /// </summary>
-    public partial class LikedSongs : Page
+    public partial class ViewAlbum : Page
     {
-        public LikedSongs()
+        public ViewAlbum()
         {
             InitializeComponent();
         }

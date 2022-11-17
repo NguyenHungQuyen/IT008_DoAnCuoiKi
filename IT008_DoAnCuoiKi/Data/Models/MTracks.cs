@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT008_DoAnCuoiKi.Data.Models
 {
-    internal class PodcastsAndShows
+    internal class MTracks
     {
     }
 }

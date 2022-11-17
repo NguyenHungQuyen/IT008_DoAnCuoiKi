@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT008_DoAnCuoiKi.Data.API.Auth;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,10 @@ namespace IT008_DoAnCuoiKi
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Task.Run(async () => await Auth.GetToken());
+
+        }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using IT008_DoAnCuoiKi.Data.API;
+using IT008_DoAnCuoiKi.Data.API.Auth;
+using IT008_DoAnCuoiKi.Data.Models;
+using IT008_DoAnCuoiKi.Pages;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static IT008_DoAnCuoiKi.Data.Models.MSearch;
 
 namespace IT008_DoAnCuoiKi
 {
@@ -24,8 +29,9 @@ namespace IT008_DoAnCuoiKi
         public MainWindow()
         {
             InitializeComponent();
-            nav_home.IsSelected= true;
+            nav_home.IsSelected = true;
         }
+
 
         private void wa_close_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -53,27 +59,22 @@ namespace IT008_DoAnCuoiKi
             WindowState = WindowState.Minimized;
         }
 
-        private void search_tb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-        }
-
-        private void search_tb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (search_tb.Text == "What do you want to listen to?")
-                search_tb.Text = "";
-        }
 
         private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selected = sidebar.SelectedItem as NavButton;
+            if (selected == null)
+                return;
             navframe.Navigate(selected.Navlink);
         }
 
-        private void search_tb_MouseLeave(object sender, MouseEventArgs e)
+        private void queue_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (search_tb.Text == "")
-                search_tb.Text = "What do you want to listen to?";
+            sidebar.SelectedItem = null;
+            navframe.Navigate(queue.Navlink);
         }
+
+       
 
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT008_DoAnCuoiKi.Data.API
 {
-    internal class Album
+    internal class RPlaylist
     {
     }
 }

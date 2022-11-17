@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using IT008_DoAnCuoiKi.PlayListThing;
 
-namespace IT008_DoAnCuoiKi.Pages
+namespace IT008_DoAnCuoiKi.PlayListThing
 {
     /// <summary>
-    /// Interaction logic for YourLibrary.xaml
+    /// Interaction logic for ViewArtists.xaml
     /// </summary>
-    public partial class YourLibrary : Page
+    public partial class ViewArtists : Page
     {
-        public YourLibrary()
+        public ViewArtists()
         {
             InitializeComponent();
-        }
-        private void Change_Page(object sender, SelectionChangedEventArgs e)
-        {
-            var selected = sidebar.SelectedItem as NavButton;
-            PlayList_Page.Navigate(selected.Navlink);
         }
     }
 }
