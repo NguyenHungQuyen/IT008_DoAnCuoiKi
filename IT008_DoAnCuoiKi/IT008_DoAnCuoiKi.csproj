@@ -148,6 +148,10 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="Pages\RecentlyPlayed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +189,9 @@
     </Compile>
     <Compile Include="Pages\Queue.xaml.cs">
       <DependentUpon>Queue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecentlyPlayed.xaml.cs">
+      <DependentUpon>RecentlyPlayed.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
