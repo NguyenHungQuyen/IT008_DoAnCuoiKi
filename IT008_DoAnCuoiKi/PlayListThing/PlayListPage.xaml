@@ -4,66 +4,73 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:IT008_DoAnCuoiKi.PlayListThing"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PlayListPage">
 
-	<Grid Background="#171717">
+    <Grid Background="#171717">
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="83*"></ColumnDefinition>
-			<ColumnDefinition Width="717*"></ColumnDefinition>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="44*"></RowDefinition>
-			<RowDefinition Height="181*"></RowDefinition>
-		</Grid.RowDefinitions>
-		<TextBlock x:Name="TagPlayList" Text="Playlists"  Margin="0,-40,649,44" Grid.ColumnSpan="2" Foreground="White" FontSize="24" FontWeight="Bold" FontFamily="Arial Black" Visibility="Hidden"/>
-		<StackPanel x:Name="IfEmpty" Background="#171717" Grid.ColumnSpan="2" Margin="0,0,0,1" Grid.Row="1" Visibility="Hidden" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"></ColumnDefinition>
+            <ColumnDefinition Width="107*"></ColumnDefinition>
+            <ColumnDefinition Width="656*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61*"></RowDefinition>
+            <RowDefinition Height="389*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TagPlayList" Text="Playlists"  Margin="0,4,2,0" Foreground="White" FontSize="24" FontWeight="Bold" FontFamily="Arial Black" Visibility="Hidden" Grid.ColumnSpan="2"/>
+        
+        
+        
+        
+        <StackPanel x:Name="IfEmpty" Background="#171717" Grid.ColumnSpan="3" Margin="0,0,0,1" Grid.Row="1" Visibility="Visible" >
+            <TextBlock Height="12"></TextBlock>
+            <Grid Height="81" Width="70">
+                <ui:SymbolIcon Symbol="MusicNote216" FontSize="75" Filled="True"/>
+            </Grid>
+            <TextBlock Height="22"></TextBlock>
+            <TextBlock  Text="Create your first playlist" Foreground="White" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="arial black"/>
+            <TextBlock Height="32"></TextBlock>
+            <TextBlock  Text="It's easy, we will help you." Foreground="White" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" FontFamily="arial black"/>
+            <TextBlock Height="29"></TextBlock>
+            <Grid Height="100">
+                <ui:Button Content="Create playlists" Foreground="Black" FontSize="18"
+                    Background="White" HorizontalAlignment="Center" Height="60" Width="150" 
+                           MouseOverBackground="#1DD05D"
+                           MouseOverBorderBrush="#000" Click="Button_Click"/>
+            </Grid>
+        </StackPanel>
 
-			<Image Height="166" Margin="42,0,39,0" VerticalAlignment="Center" Source="/PlayListThing/MusicNoteIcon.png" Grid.Column="1"/>
-			<TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Create your first playlist&#x0a;It's easy, we'll help you" Foreground="White" FontSize="24" FontWeight="Bold" Height="65" FontFamily="Arial Black" TextAlignment="Center" Grid.ColumnSpan="2"/>
-			<!-- <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="It's easy, we'll help you" Foreground="White" FontSize="20" Height="29" Width="288" FontFamily="Arial Black" TextAlignment="Center" Margin="0,46,0,0" Grid.Column="1"/> -->
-			<Button x:Name="CreateList" Background="White" Content="Create playlist" FontSize="15" FontFamily="Arial Black" Grid.Column="1" Margin="48,21,47,20" Grid.Row="1" Width="200" RenderTransformOrigin="0.5,0.5" Height="50" Click="CreateList_Click" >
-				<Button.Resources>
-					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="25"/>
-					</Style>
-				</Button.Resources>
-				<Button.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform/>
-						<SkewTransform AngleX="-2.729"/>
-						<RotateTransform/>
-						<TranslateTransform X="0.507"/>
-					</TransformGroup>
-				</Button.RenderTransform>
-			</Button>
-		</StackPanel>
-		<ScrollViewer x:Name="ScrollViewLists" VerticalScrollBarVisibility="Auto" Padding="0,0,0,0" CanContentScroll="True" Margin="42,0,0,1" Grid.ColumnSpan="2" Grid.RowSpan="2" Visibility="Hidden" >
-			<ItemsControl x:Name="PlayListControl" ItemsSource="{Binding}">
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<StackPanel>
-							<Border Background="#141414" BorderThickness="1" CornerRadius="10" Margin="15">
-								<StackPanel>
-									<TextBlock Height="25"></TextBlock>
-									<Image x:Name="SongImage" Width="126" Source="{Binding Image}" OpacityMask="#FF6D6969" Height="131" Stretch="Uniform"/>
-									<TextBlock x:Name="PlayListName"  HorizontalAlignment="Center"  TextWrapping="Wrap" Text="{Binding PlayListName}" VerticalAlignment="Top" Height="42" Width="193" Foreground="White" FontSize="20" TextAlignment="Center" Grid.RowSpan="2"/>
-									<TextBlock x:Name="ByUserName" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding ByWhom}" VerticalAlignment="Center" Height="27" Width="193" Foreground="White" FontSize="18" TextAlignment="Center"/>
-								</StackPanel>
-							</Border>
-						</StackPanel>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-				<ItemsControl.ItemsPanel>
-					<ItemsPanelTemplate>
-						<WrapPanel>
 
-						</WrapPanel>
-					</ItemsPanelTemplate>
-				</ItemsControl.ItemsPanel>
-			</ItemsControl>
-		</ScrollViewer>
-	</Grid>
+
+
+
+        <ScrollViewer x:Name="ScrollViewLists" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,0,0,0" CanContentScroll="True" Margin="3,0,0,1" Grid.ColumnSpan="2" Visibility="Visible" Grid.Row="1" Grid.Column="1" >
+            <ItemsControl x:Name="PlayListControl" ItemsSource="{Binding}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Border Background="#141414" BorderThickness="1" CornerRadius="10" Margin="15">
+                                <StackPanel>
+                                    <TextBlock Height="25"></TextBlock>
+                                    <Image x:Name="SongImage" Width="126" Source="{Binding Image}" OpacityMask="#FF6D6969" Height="131" Stretch="Uniform"/>
+                                    <TextBlock x:Name="PlayListName"  HorizontalAlignment="Center"  TextWrapping="Wrap" Text="{Binding PlayListName}" VerticalAlignment="Top" Height="42" Width="193" Foreground="White" FontSize="20" TextAlignment="Center" Grid.RowSpan="2"/>
+                                    <TextBlock x:Name="ByUserName" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding ByWhom}" VerticalAlignment="Center" Height="27" Width="193" Foreground="White" FontSize="18" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel>
+
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
 </Page>

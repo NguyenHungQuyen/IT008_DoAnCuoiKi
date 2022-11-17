@@ -24,10 +24,13 @@ namespace IT008_DoAnCuoiKi.Pages
         public YourLibrary()
         {
             InitializeComponent();
+            nav_playlists.IsSelected = true;
         }
         private void Change_Page(object sender, SelectionChangedEventArgs e)
         {
             var selected = sidebar.SelectedItem as NavButton;
+            if (selected == null)
+                return;
             PlayList_Page.Navigate(selected.Navlink);
         }
     }
