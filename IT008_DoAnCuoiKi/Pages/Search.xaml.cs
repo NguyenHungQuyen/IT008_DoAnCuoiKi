@@ -54,7 +54,7 @@ namespace IT008_DoAnCuoiKi.Pages
                 {
                     case "artist":
                         var listArtist = new List<MArtists>();
-                        foreach (var item in res.artists.items)
+                        foreach (var item in res?.artists.items)
                         {
                             listArtist.Add(new MArtists()
                             {
@@ -73,10 +73,10 @@ namespace IT008_DoAnCuoiKi.Pages
                         break;
                     case "track":
                         var listTrack = new List<MTracks>();
-                        //foreach (var item in res?.tracks.items)
-                        //{
+                        foreach (var item in res?.tracks.items)
+                        {
 
-                        //}
+                        }
                         break;
                 }
             }
