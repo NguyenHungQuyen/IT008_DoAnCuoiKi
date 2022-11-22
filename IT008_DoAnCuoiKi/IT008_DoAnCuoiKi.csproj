@@ -160,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="Pages\Queue_Rp_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\RecentlyPlayed.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -205,6 +209,9 @@
     </Compile>
     <Compile Include="Pages\Queue.xaml.cs">
       <DependentUpon>Queue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Queue_Rp_page.xaml.cs">
+      <DependentUpon>Queue_Rp_page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RecentlyPlayed.xaml.cs">
       <DependentUpon>RecentlyPlayed.xaml</DependentUpon>
