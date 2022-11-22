@@ -15,13 +15,13 @@ using static IT008_DoAnCuoiKi.Data.Models.MSearch;
 
 namespace IT008_DoAnCuoiKi.Data.API
 {
-    public static class RSearch
+    public static class RTrack
     {
         public static SpotifyResult SearchByType(string search_word, string type)
         {
             var client = new RestClient("https://api.spotify.com/v1/search");
             client.AddDefaultHeader("Authorization", $"Bearer {TokenString.AccessToken}");
-            var request = new RestRequest($"?q={search_word}&type={type}&limit=50&market=VN", Method.Get);
+            var request = new RestRequest($"?q={search_word}&type={type}&limit=50", Method.Get);
             try
             {
                 var response = client.Execute(request);
@@ -39,7 +39,7 @@ namespace IT008_DoAnCuoiKi.Data.API
                 else
                 {
                     MessageBox.Show(response?.StatusDescription);
-                    return null; 
+                    return null;
                 }
             }
             catch (Exception ex)

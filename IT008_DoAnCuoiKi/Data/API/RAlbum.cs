@@ -8,5 +8,6 @@ namespace IT008_DoAnCuoiKi.Data.API
 {
     internal class RAlbum
     {
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT008_DoAnCuoiKi.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,12 @@ namespace IT008_DoAnCuoiKi.Pages.LikedSongsPage
         public LikedSongs()
         {
             InitializeComponent();
+            this.DataContext = new ControlPageViewModel();
         }
 
-        private void liked_songs_find_songs_btn_Click(object sender, RoutedEventArgs e)
+        private void find_songs_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate("/Pages/Search.xaml");
-            MessageBox.Show("JHelo");
+            this.NavigationService.Navigate(new Search());
         }
     }
 }

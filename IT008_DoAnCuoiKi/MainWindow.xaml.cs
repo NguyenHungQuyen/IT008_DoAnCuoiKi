@@ -2,10 +2,14 @@
 using IT008_DoAnCuoiKi.Data.API.Auth;
 using IT008_DoAnCuoiKi.Data.Models;
 using IT008_DoAnCuoiKi.Pages;
+using IT008_DoAnCuoiKi.Pages.LikedSongsPage;
+using IT008_DoAnCuoiKi.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,55 +30,47 @@ namespace IT008_DoAnCuoiKi
     /// </summary>
     public partial class MainWindow : Window
     {
+        public System.Windows.Media.Brush color => nav_home.Background;
+        public string Source { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             nav_home.IsSelected = true;
         }
 
-
-        private void wa_close_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void wa_maxmin_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            switch (WindowState)
+            var selected = sidebar.SelectedItem as ListBoxItem;
+            if (selected == null)
+                return;
+            selected.Background = color;
+            string uri = selected.Name;
+            switch (uri)
             {
-                case (WindowState.Maximized):
-                    WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                    ResizeMode = ResizeMode.NoResize;
-                    WindowState = WindowState.Normal;
+                case "nav_home":
+                    navframe.Navigate(new Home());
                     break;
-                case (WindowState.Normal):
-                    ResizeMode = ResizeMode.NoResize;
-                    WindowState = WindowState.Maximized;
+                case "nav_search":
+                    navframe.Navigate(new Search());
+                    break;
+                case "nav_library":
+                    navframe.Navigate(new YourLibrary());
+                    break;
+                case "nav_create_playlist":
+                    navframe.Navigate(new CreatePlaylist());
+                    break;
+                case "nav_liked_songs":
+                    navframe.Navigate(new LikedSongs());
+                    break;
+                default:
                     break;
             }
         }
 
-        private void wa_hide_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-
-        private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var selected = sidebar.SelectedItem as NavButton;
-            if (selected == null)
-                return;
-            navframe.Navigate(selected.Navlink);
-        }
-
-        private void queue_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void queue_Click(object sender, RoutedEventArgs e)
         {
             sidebar.SelectedItem = null;
-            navframe.Navigate(queue.Navlink);
+            navframe.Navigate(new Queue());
         }
-
-       
-
     }
 }

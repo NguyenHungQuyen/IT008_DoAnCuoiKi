@@ -27,9 +27,7 @@ namespace IT008_DoAnCuoiKi.Pages
         public Search()
         {
             InitializeComponent();
-            
         }
-
 
         private void btn_search_Click(object sender, RoutedEventArgs e)
         {
@@ -41,7 +39,7 @@ namespace IT008_DoAnCuoiKi.Pages
             }
             ComboBoxItem dropdown_item = dropdown.SelectedItem as ComboBoxItem;
             string type = dropdown_item.Content.ToString().ToLower();
-            if(type.CompareTo("choose type") == 0)
+            if (type.CompareTo("choose type") == 0)
             {
                 MessageBox.Show("Please choose type!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 SearchResult.ItemsSource = null;
@@ -53,31 +51,31 @@ namespace IT008_DoAnCuoiKi.Pages
                 switch (type)
                 {
                     case "artist":
-                        var listArtist = new List<MArtists>();
+                        var listArtist = new List<ArtistItem>();
                         foreach (var item in res?.artists.items)
-                        {
-                            listArtist.Add(new MArtists()
-                            {
-                                ID = item.id,
-                                Name = item.name,
-                                ArtistImage = item.images.Any() ? item.images[0].url : "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png",
-                                Popularity = item.popularity,
-                                Followers = item.followers.total,
-                                Genres = item.genres,
-                                Type = item.type,
-                                Href = item.href,
-                                External_Url = item.external_urls.spotify
-                            });
-                        }
+                            listArtist.Add(item);
                         SearchResult.ItemsSource = listArtist;
                         break;
                     case "track":
-                        var listTrack = new List<MTracks>();
-                        //foreach (var item in res?.tracks.items)
-                        //{
-
-                        //}
+                        var listTrack = new List<TracksItem>();
+                        foreach (var item in res?.tracks.items)
+                            listTrack.Add(item);
+                        SearchResult.ItemsSource = listTrack;
                         break;
+                    case "album":
+                        var listAlbum = new List<AlbumsItem>();
+                        foreach (var item in res?.albums.items)
+                            listAlbum.Add(item);
+                        SearchResult.ItemsSource = listAlbum;
+                        break;
+                    case "playlist":
+                        var listPlaylist = new List<PlaylistsItem>();
+                        foreach (var item in res?.playlists.items)
+                            listPlaylist.Add(item);
+                        SearchResult.ItemsSource = listPlaylist;
+                        break;
+                    default:
+                        return; 
                 }
             }
         }

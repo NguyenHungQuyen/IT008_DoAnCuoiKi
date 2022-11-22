@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:IT008_DoAnCuoiKi.Pages.LikedSongsPage" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:local="clr-namespace:IT008_DoAnCuoiKi.Pages.LikedSongsPage" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" xmlns:viewmodel="clr-namespace:IT008_DoAnCuoiKi.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ControlPageViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LikedSongs">
@@ -50,7 +50,7 @@
                     <ui:SymbolIcon Symbol="MusicNote120" Grid.Row="0" FontSize="46" Margin="0,30,0,0" />
                     <TextBlock Text="Songs you like will appear here" Foreground="White" FontWeight="Bold" FontSize="26" Grid.Row="1" TextAlignment="Center" Margin="0,30,0,0" />
                     <TextBlock Text="Save songs by tapping the heart icon." Foreground="White" FontWeight="DemiBold" FontSize="13" Grid.Row="2" TextAlignment="Center" Margin="0,40,0,0" />
-                    <ui:Button x:Name="liked_songs_find_songs_btn" Click="liked_songs_find_songs_btn_Click" Grid.Row="3" HorizontalAlignment="Center" Background="#fff" Foreground="#000" FontSize="12" Padding="14, 8" FontWeight="DemiBold" Margin="0,40,0,0">
+                    <ui:Button x:Name="find_songs_btn" Click="find_songs_btn_Click" Grid.Row="3" HorizontalAlignment="Center" Background="#fff" Foreground="#000" FontSize="12" Padding="14, 8" FontWeight="DemiBold" Margin="0,40,0,0">
                         Find Songs
                     </ui:Button>
 

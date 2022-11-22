@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static IT008_DoAnCuoiKi.Data.Models.MSearch;
 
 namespace IT008_DoAnCuoiKi.Data.Models
 {
-    internal class MArtists
+    public class ArtistItem : BaseModel
     {
-        public string ID { get; set; }
-        public string Name { get; set; }
-        public Int64 Followers { get; set; }
-        public string ArtistImage { get; set; }
-        public string External_Url { get; set; }
-        public List<string> Genres { get; set; }
-        public string Type { get; set; }
-        public int Popularity { get; set; }
-        public string Href { get; set; }
+        public Followers followers { get; set; }
+        public List<string> genres { get; set; }
+        public int popularity { get; set; }
+        public string type { get; set; }
+        public string uri { get; set; }
     }
+    public class MArtists : BaseSearch
+    {
+        public List<ArtistItem> items { get; set; }
+    }
+
 }

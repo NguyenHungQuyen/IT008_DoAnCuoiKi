@@ -21,33 +21,42 @@
                 <ComboBoxItem>Artist</ComboBoxItem>
                 <ComboBoxItem>Album</ComboBoxItem>
                 <ComboBoxItem>Track</ComboBoxItem>
-                <ComboBoxItem>Episode</ComboBoxItem>
                 <ComboBoxItem>Playlist</ComboBoxItem>
             </ComboBox>
             <ui:Button Content="Search" Background="#1DD05D" x:Name="btn_search" Click="btn_search_Click" />
         </WrapPanel>
 
-        <TextBlock Grid.Row="2" Text="Browse all" FontSize="20" FontWeight="Bold" Foreground="#fff" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="2" Text="{Binding songName}" FontSize="20" FontWeight="Bold" Foreground="#fff" HorizontalAlignment="Left"/>
+        <ScrollViewer Grid.Row="3">
+        <VirtualizingStackPanel IsVirtualizing="True" VirtualizationMode="Recycling" Grid.Row="3">
         <ListView x:Name="SearchResult" Grid.Row="3" HorizontalContentAlignment="Left" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <ui:Card Padding="0" ClipToBounds="True">
-                        <StackPanel Uid="{Binding ID}" Tag="{Binding ID}" ToolTip="{Binding ID}" ClipToBounds="True">
-                            <Image Source="{Binding ArtistImage}" Width="200" Height="200" ClipToBounds="True"/>
-                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
-                            <TextBlock Text="{Binding Popularity}" TextWrapping="Wrap" />
-                            <TextBlock Text="{Binding Followers}" TextWrapping="Wrap"/>
-                            <TextBlock Text="{Binding ID}" TextWrapping="Wrap"/>
-                            <ui:Hyperlink NavigateUri="{Binding External_Url}">Spotify Profile</ui:Hyperlink>
+                        <StackPanel Uid="{Binding id}" Tag="{Binding id}" ToolTip="{Binding id}" ClipToBounds="True">
+                            <Image Source="{Binding images[0].url}" Width="200" Height="200" ClipToBounds="True"/>
+                            <TextBlock Text="{Binding name}" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding popularity}" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding followers.total}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding id}" TextWrapping="Wrap"/>
+                            <ui:Hyperlink NavigateUri="{Binding external_urls.spotify}">Spotify Profile</ui:Hyperlink>
                         </StackPanel>
                     </ui:Card>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListView>
+        </VirtualizingStackPanel>
+        <!--<Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+        </Grid>-->
+        </ScrollViewer>
     </Grid>
 </Page>
