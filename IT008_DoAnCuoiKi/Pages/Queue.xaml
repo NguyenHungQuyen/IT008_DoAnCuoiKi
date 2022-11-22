@@ -45,10 +45,12 @@
                     HorizontalAlignment="Center"
                     Content="Find something to play"
                     FontSize="14"
+                       x:Name="find_st_to_play"
                            Padding="20, 8"
                     Foreground="Black"
                            MouseOverBackground="#1DD05D"
                            MouseOverBorderBrush="#000"
+                       Click="find_st_to_play_Click"
                            >
             </ui:Button>
             <!--</Border>-->
