@@ -48,13 +48,13 @@
                             </WrapPanel>
                         </StackPanel>
                     </Grid>
-                    <Grid Grid.Row="1" Grid.RowSpan="2">
+                    <Grid Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,15">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="19*"></ColumnDefinition>
-                            <ColumnDefinition Width="181*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="23*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        
-                        <ui:Button Width="75" Height="75" Background="#121212" BorderBrush="Transparent" MouseOverBackground="Transparent" MouseOverBorderBrush="Transparent" HorizontalAlignment="Center"  >
+
+                        <ui:Button Width="56" Height="55" Background="#121212" BorderBrush="Transparent" MouseOverBackground="Transparent" MouseOverBorderBrush="Transparent" HorizontalAlignment="Center"  >
                             <ui:Button.Content>
                                 <Path
                                     
@@ -65,8 +65,34 @@
                             </ui:Button.Content>
                         </ui:Button>
                         <ui:Button 
-                            Content="...&#x0a;" FontSize="40"
-                            Width="75" Height="75"  Background="#121212" BorderBrush="Transparent" MouseOverBackground="Transparent" MouseOverBorderBrush="Transparent" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center" FontStyle="Normal" FontWeight="Heavy"/>
+                            Content="...&#x0a;" FontSize="30"
+                            Width="53" Height="54" BorderBrush="Transparent" MouseOverBackground="Transparent" MouseOverBorderBrush="Transparent" Grid.Column="1" FontStyle="Normal" FontWeight="Heavy" Margin="4,0,0,0" >
+                            <ui:Button.Background>
+                                <ImageBrush/>
+                            </ui:Button.Background>
+                        </ui:Button>
+                    </Grid>
+                    <Grid x:Name="SearchPlace" Grid.Row="2" Margin="0,21,0,-37" Grid.RowSpan="4" Visibility="Visible" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="302*"></ColumnDefinition>
+                            <ColumnDefinition Width="101*"></ColumnDefinition>
+                            <ColumnDefinition Width="110*"></ColumnDefinition>
+                            <ColumnDefinition Width="98*"></ColumnDefinition>
+                            <ColumnDefinition Width="102*"></ColumnDefinition>
+                            <ColumnDefinition Width="86*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27.2"></RowDefinition>
+                            <RowDefinition Height="66.133"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <WrapPanel x:Name="searchbar" Visibility="Visible" VerticalAlignment="Top" Height="70" Grid.RowSpan="2" Margin="0,23,0,0">
+                            <ui:TextBox Width="335" Icon="Search20" PlaceholderText="Search for songs " IconForeground="#fff" x:Name="search_tb" Height="60" />
+
+                        </WrapPanel>
+                        <ui:Button x:Name="Xbutton"  Visibility="Visible" BorderBrush="Transparent" Background="#1212" Grid.Column="5" Content="x" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56" Width="66"  Grid.Row="1" FontWeight="Normal" Click="Button_Click"/>
+                        <ui:Button x:Name="Findmore" Visibility="Hidden" BorderBrush="Transparent" Background="#1212" Grid.Column="5" Content="Find more" FontSize="15" Height="65" Width="144" Grid.Row="1" FontWeight="Bold" Click="Findmore_Click" />
                     </Grid>
                 </Grid>
             </ScrollViewer>

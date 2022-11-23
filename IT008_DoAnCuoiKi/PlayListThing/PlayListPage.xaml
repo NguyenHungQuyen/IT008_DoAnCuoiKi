@@ -14,40 +14,21 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="37*"></ColumnDefinition>
             <ColumnDefinition Width="107*"></ColumnDefinition>
-            <ColumnDefinition Width="656*"/>
+            <ColumnDefinition Width="125*"/>
+            <ColumnDefinition Width="242*"/>
+            <ColumnDefinition Width="289*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="61*"></RowDefinition>
-            <RowDefinition Height="389*"></RowDefinition>
+            <RowDefinition Height="218*"></RowDefinition>
+            <RowDefinition Height="68*"/>
+            <RowDefinition Height="103*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="TagPlayList" Text="Playlists"  Margin="0,4,2,0" Foreground="White" FontSize="24" FontWeight="Bold" FontFamily="Arial Black" Visibility="Hidden" Grid.ColumnSpan="2"/>
-        
-        
-        
-        
-        <StackPanel x:Name="IfEmpty" Background="#171717" Grid.ColumnSpan="3" Margin="0,0,0,1" Grid.Row="1" Visibility="Visible" >
-            <TextBlock Height="12"></TextBlock>
-            <Grid Height="81" Width="70">
-                <ui:SymbolIcon Symbol="MusicNote216" FontSize="75" Filled="True"/>
-            </Grid>
-            <TextBlock Height="22"></TextBlock>
-            <TextBlock  Text="Create your first playlist" Foreground="White" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="arial black"/>
-            <TextBlock Height="32"></TextBlock>
-            <TextBlock  Text="It's easy, we will help you." Foreground="White" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" FontFamily="arial black"/>
-            <TextBlock Height="29"></TextBlock>
-            <Grid Height="100">
-                <ui:Button Content="Create playlists" Foreground="Black" FontSize="18"
-                    Background="White" HorizontalAlignment="Center" Height="60" Width="150" 
-                           MouseOverBackground="#1DD05D"
-                           MouseOverBorderBrush="#000" Click="Button_Click"/>
-            </Grid>
-        </StackPanel>
 
 
 
-
-
-        <ScrollViewer x:Name="ScrollViewLists" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,0,0,0" CanContentScroll="True" Margin="3,0,0,1" Grid.ColumnSpan="2" Visibility="Visible" Grid.Row="1" Grid.Column="1" >
+        <ScrollViewer x:Name="ScrollViewLists" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,0,0,0" CanContentScroll="True" Margin="3,0,0,1" Grid.ColumnSpan="4" Visibility="Hidden" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" >
             <ItemsControl x:Name="PlayListControl" ItemsSource="{Binding}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -72,5 +53,27 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
+
+
+        <StackPanel x:Name="IfEmpty" Background="#171717" Grid.ColumnSpan="5" Margin="0,0,0,1" Visibility="Hidden" Grid.RowSpan="4" >
+            <TextBlock Height="53"></TextBlock>
+            <Grid Height="81" Width="70">
+                <ui:SymbolIcon Symbol="MusicNote216" FontSize="75" Filled="True"/>
+            </Grid>
+            <TextBlock Height="22"></TextBlock>
+            <TextBlock  Text="Create your first playlist" Foreground="White" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="arial black"/>
+            <TextBlock Height="32"></TextBlock>
+            <TextBlock  Text="It's easy, we will help you." Foreground="White" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" FontFamily="arial black"/>
+            <TextBlock Height="29"></TextBlock>
+            <Grid Height="100" Width="653">
+                <Grid Height="100" Width="649">
+                    <ui:Button Content="Create playlists" Foreground="Black" FontSize="18"
+                           Background="White" HorizontalAlignment="Center" Height="60" Width="150" 
+                           MouseOverBackground="#1DD05D"
+                           MouseOverBorderBrush="#000" 
+                           Click="Button_Click"/>
+                </Grid>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>
