@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Wpf.Ui.Common.Interfaces;
 
 namespace IT008_DoAnCuoiKi.Pages
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for RecentlyPlayed.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class RecentlyPlayed : Page
     {
-        public Home()
+        public RecentlyPlayed()
         {
             InitializeComponent();
         }

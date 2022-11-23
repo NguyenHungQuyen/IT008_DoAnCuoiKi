@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT008_DoAnCuoiKi.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IT008_DoAnCuoiKi.page
+namespace IT008_DoAnCuoiKi.Pages.LikedSongsPage
 {
     /// <summary>
     /// Interaction logic for LikedSongs.xaml
@@ -23,11 +24,12 @@ namespace IT008_DoAnCuoiKi.page
         public LikedSongs()
         {
             InitializeComponent();
+            this.DataContext = new ControlPageViewModel();
         }
 
-        private void liked_sóng_find_songs_btn_Click(object sender, RoutedEventArgs e)
+        private void find_songs_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new Search());
         }
     }
 }

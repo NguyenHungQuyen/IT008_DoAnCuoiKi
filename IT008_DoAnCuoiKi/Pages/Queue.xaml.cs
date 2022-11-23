@@ -24,5 +24,10 @@ namespace IT008_DoAnCuoiKi.Pages
         {
             InitializeComponent();
         }
+
+        private void find_st_to_play_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Search());
+        }
     }
 }

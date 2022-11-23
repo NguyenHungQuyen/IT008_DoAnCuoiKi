@@ -4,31 +4,28 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.DirectoryServices;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using static IT008_DoAnCuoiKi.Data.Models.MSearch;
 
 namespace IT008_DoAnCuoiKi.Data.API
 {
-    public static class RSearch
+    public static class RCategory
     {
-        public static SpotifyResult SearchByType(string search_word, string type)
+        public static SpotifyResult AllCategories()
         {
-            var client = new RestClient("https://api.spotify.com/v1/search");
+            var client = new RestClient("https://api.spotify.com/v1/browse/categories");
             client.AddDefaultHeader("Authorization", $"Bearer {TokenString.AccessToken}");
-            var request = new RestRequest($"?q={search_word}&type={type}&limit=50&market=VN", Method.Get);
+            var request = new RestRequest($"?country=VN&limit=50", Method.Get);
             try
             {
                 var response = client.Execute(request);
 
                 if (response.IsSuccessful)
                 {
-                    using (StreamWriter sw = new StreamWriter("Data.txt"))
+                    using (StreamWriter sw = new StreamWriter("Category.txt"))
                     {
                         sw.WriteLine(response.Content);
                         sw.Close();
@@ -39,7 +36,7 @@ namespace IT008_DoAnCuoiKi.Data.API
                 else
                 {
                     MessageBox.Show(response?.StatusDescription);
-                    return null; 
+                    return null;
                 }
             }
             catch (Exception ex)
