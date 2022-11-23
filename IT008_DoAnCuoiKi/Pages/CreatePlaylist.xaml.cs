@@ -24,5 +24,19 @@ namespace IT008_DoAnCuoiKi.Pages
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.searchbar.Visibility = Visibility.Hidden;
+            this.Xbutton.Visibility = Visibility.Hidden;
+            this.Findmore.Visibility = Visibility.Visible;
+        }
+
+        private void Findmore_Click(object sender, RoutedEventArgs e)
+        {
+            this.searchbar.Visibility = Visibility.Visible;
+            this.Xbutton.Visibility = Visibility.Visible;
+            this.Findmore.Visibility = Visibility.Hidden;
+        }
     }
 }

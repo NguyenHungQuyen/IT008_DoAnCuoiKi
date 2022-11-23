@@ -31,7 +31,6 @@ namespace IT008_DoAnCuoiKi.PlayListThing
             else
             {
                 ScrollViewLists.Visibility = Visibility.Visible;
-                ScrollViewLists.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
                 TagPlayList.Visibility = Visibility.Visible;
                 var playlist = PlayListCheck;
                 if (playlist.Count > 0)
@@ -63,13 +62,13 @@ namespace IT008_DoAnCuoiKi.PlayListThing
             };
         }
 
-        private void CreateList_Click(object sender, RoutedEventArgs e)
+     
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             PlayListCheck.Add(new PlayListInformation("/PlayListThing/spotify.png", "FirstList", "By huy"));
             IfEmpty.Visibility = Visibility.Hidden;
             ScrollViewLists.Visibility = Visibility.Visible;
             TagPlayList.Visibility = Visibility.Visible;
-            ScrollViewLists.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
             var playlist = PlayListCheck;
             if (playlist.Count > 0)
             {

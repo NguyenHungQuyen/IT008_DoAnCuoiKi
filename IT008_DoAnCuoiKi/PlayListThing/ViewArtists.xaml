@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:local="clr-namespace:IT008_DoAnCuoiKi.PlayListThing"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -15,21 +16,11 @@
 			<TextBlock></TextBlock>
 			<TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Follow your first artist" Foreground="White" FontSize="24" FontWeight="Bold" Height="67" FontFamily="Arial Black" TextAlignment="Center" Grid.ColumnSpan="2"/>
 			<TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Follow artists you like by tapping the following button." Foreground="White" FontSize="15" FontWeight="Bold" Height="65" FontFamily="Arial Black" TextAlignment="Center" Grid.ColumnSpan="2"/>
-			<Button x:Name="FindArtist" Background="White" Content="Find artists" FontSize="15" FontFamily="Arial Black" Grid.Column="1" Margin="48,21,47,20" Grid.Row="1" Width="200" RenderTransformOrigin="0.5,0.5" Height="52">
-				<Button.Resources>
-					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="25"/>
-					</Style>
-				</Button.Resources>
-				<Button.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform/>
-						<SkewTransform AngleX="-2.729"/>
-						<RotateTransform/>
-						<TranslateTransform X="0.507"/>
-					</TransformGroup>
-				</Button.RenderTransform>
-			</Button>
-		</StackPanel>
+            <Grid Height="100">
+                <ui:Button Content="Find artists" Foreground="Black" FontSize="18"
+                    Background="White" HorizontalAlignment="Center" Height="60" Width="150" MouseOverBackground="#1DD05D"
+                           MouseOverBorderBrush="#000"/>
+            </Grid>
+        </StackPanel>
 	</Grid>
 </Page>
