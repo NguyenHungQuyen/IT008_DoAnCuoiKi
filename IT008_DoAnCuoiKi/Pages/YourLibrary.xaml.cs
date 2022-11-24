@@ -28,10 +28,29 @@ namespace IT008_DoAnCuoiKi.Pages
         }
         private void Change_Page(object sender, SelectionChangedEventArgs e)
         {
-            var selected = sidebar.SelectedItem as NavButton;
+            var selected = sidebar.SelectedItem as ListBoxItem;
             if (selected == null)
                 return;
-            PlayList_Page.Navigate(selected.Navlink);
+            //selected.Background = color;
+            string uri = selected.Name;
+            switch (uri)
+            {
+                case "nav_playlists":
+                    PlayList_Page.Navigate(new PlayListPage());
+                    break;           
+                case "nav_artists":
+                    PlayList_Page.Navigate(new ViewArtists());
+                    break;
+                case "nav_albums":
+                    PlayList_Page.Navigate(new ViewAlbum());
+                    break;            
+                default:
+                    break;
+            }
+            /* var selected = sidebar.SelectedItem as NavButton;
+             if (selected == null)
+                 return;
+             PlayList_Page.Navigate(selected.Navlink);*/
         }
     }
 }

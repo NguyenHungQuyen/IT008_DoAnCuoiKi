@@ -19,7 +19,7 @@
             <Grid Height="100">
                 <ui:Button Content="Find artists" Foreground="Black" FontSize="18"
                     Background="White" HorizontalAlignment="Center" Height="60" Width="150" MouseOverBackground="#1DD05D"
-                           MouseOverBorderBrush="#000"/>
+                           MouseOverBorderBrush="#000" Click="Button_Click"/>
             </Grid>
         </StackPanel>
 	</Grid>
