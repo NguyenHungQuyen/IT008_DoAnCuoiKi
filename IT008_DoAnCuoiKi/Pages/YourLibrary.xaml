@@ -10,7 +10,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="YourLibrary">
 
-    <Grid>
+    <Grid Background="#171717">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -23,14 +23,14 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="33*"></RowDefinition>
-            <RowDefinition Height="73*"/>
-            <RowDefinition Height="44*"></RowDefinition>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="59*"></RowDefinition>
             <RowDefinition Height="75*"></RowDefinition>
             <RowDefinition Height="75*"></RowDefinition>
             <RowDefinition Height="75*"></RowDefinition>
             <RowDefinition Height="75*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox SelectionMode="Single" x:Name="sidebar" SelectionChanged="Change_Page" Background="Transparent" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.ColumnSpan="4" Grid.Column="1" Margin="0,0,0,10" Grid.Row="1">
+        <!--<ListBox SelectionMode="Single" x:Name="sidebar" SelectionChanged="Change_Page" Background="Transparent" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.ColumnSpan="4" Grid.Column="1" Margin="0,0,0,10" Grid.Row="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
@@ -46,6 +46,38 @@
                         Navlink="/PlayListThing/ViewAlbum.xaml"
                         x:Name ="nav_your_lib"
                         Icon="M28.4045 0.866302C12.7545 0.866302 0.0628052 12.9256 0.0628052 27.7797C0.0628052 42.6429 12.7545 54.7024 28.4045 54.7024C44.0544 54.7024 56.7461 42.6429 56.7461 27.7797C56.7461 12.9256 44.0544 0.866302 28.4045 0.866302ZM28.4045 6.16555C41.0008 6.16555 51.116 15.8474 51.116 27.7797C51.116 39.7211 41.0008 49.4031 28.4045 49.4031C15.8082 49.4031 5.69297 39.7211 5.69297 27.7797C5.69297 15.8474 15.8082 6.16555 28.4045 6.16555ZM28.4045 17.7258C22.5835 17.7258 17.8121 22.2355 17.8121 27.7797C17.8121 33.333 22.5835 37.8428 28.4045 37.8428C34.2255 37.8428 38.9968 33.333 38.9968 27.7797C38.9968 22.2355 34.2255 17.7258 28.4045 17.7258ZM28.4045 23.0159C31.1718 23.0159 33.4621 25.1573 33.4621 27.7797C33.4621 30.4112 31.1718 32.5528 28.4045 32.5528C25.6371 32.5528 23.3469 30.4112 23.3469 27.7797C23.3469 25.1573 25.6371 23.0159 28.4045 23.0159Z" />
+        </ListBox>-->
+        <ListBox SelectionMode="Single" x:Name="sidebar" SelectionChanged="Change_Page" Background="Transparent" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.ColumnSpan="5" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,0,10">
+            <ListBox.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="Margin" Value="20,0,0,0" />
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="Foreground" Value="#f0f0f0" />
+                </Style>
+            </ListBox.Resources>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem Background="#5A5A5A" x:Name="nav_playlists" Height="45">
+                <WrapPanel Width="89" Margin="0,0,0,-8">
+
+                    <TextBlock Text="Playlists" Height="29" Width="50" />
+                </WrapPanel>
+            </ListBoxItem>
+            <ListBoxItem  Background="#5A5A5A" x:Name="nav_artists" Height="45">
+                <WrapPanel Width="92" Height="34" Margin="0,0,0,-7">
+                    <TextBlock HorizontalAlignment="Center" Text="Artists" Height="29" Width="62"/>
+                </WrapPanel>
+            </ListBoxItem>
+            <ListBoxItem  Background="#5A5A5A" x:Name="nav_albums" Height="45" Width="101">
+                <WrapPanel  Width="174" Height="42">
+                    <TextBlock Text="Albums" Height="23" Width="67" />
+                </WrapPanel>
+            </ListBoxItem>
+
         </ListBox>
         <Frame x:Name="PlayList_Page" Background="#171717" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="5" NavigationUIVisibility="Hidden" Source="/PlayListThing/PlayListPage.xaml" />
     </Grid>

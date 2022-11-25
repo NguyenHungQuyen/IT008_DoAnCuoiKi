@@ -24,7 +24,7 @@
             <RowDefinition Height="68*"/>
             <RowDefinition Height="103*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="TagPlayList" Text="Playlists"  Margin="0,4,2,0" Foreground="White" FontSize="24" FontWeight="Bold" FontFamily="Arial Black" Visibility="Hidden" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="TagPlayList" Text="Playlists"  Margin="0,4,7,0" Foreground="White" FontSize="24" FontWeight="Bold" FontFamily="Arial Black" Visibility="Hidden" Grid.Column="1" Grid.ColumnSpan="2"/>
 
 
 
@@ -56,15 +56,15 @@
 
 
         <StackPanel x:Name="IfEmpty" Background="#171717" Grid.ColumnSpan="5" Margin="0,0,0,1" Visibility="Hidden" Grid.RowSpan="4" >
-            <TextBlock Height="53"></TextBlock>
+            <TextBlock Height="77"></TextBlock>
             <Grid Height="81" Width="70">
                 <ui:SymbolIcon Symbol="MusicNote216" FontSize="75" Filled="True"/>
             </Grid>
-            <TextBlock Height="22"></TextBlock>
+            <TextBlock Height="14"></TextBlock>
             <TextBlock  Text="Create your first playlist" Foreground="White" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="arial black"/>
-            <TextBlock Height="32"></TextBlock>
+            <TextBlock Height="40"></TextBlock>
             <TextBlock  Text="It's easy, we will help you." Foreground="White" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" FontFamily="arial black"/>
-            <TextBlock Height="29"></TextBlock>
+            <TextBlock Height="40"></TextBlock>
             <Grid Height="100" Width="653">
                 <Grid Height="100" Width="649">
                     <ui:Button Content="Create playlists" Foreground="Black" FontSize="18"

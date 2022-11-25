@@ -23,6 +23,13 @@ namespace IT008_DoAnCuoiKi.PlayListThing
         public ViewArtists()
         {
             InitializeComponent();
+            //this.DataContext = new ViewModel.ControlPageViewModel();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Pages.Search());
+            //Pages.Search.
         }
     }
 }

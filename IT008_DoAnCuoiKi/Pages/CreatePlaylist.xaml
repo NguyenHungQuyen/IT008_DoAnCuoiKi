@@ -78,8 +78,8 @@
                             <ColumnDefinition Width="101*"></ColumnDefinition>
                             <ColumnDefinition Width="110*"></ColumnDefinition>
                             <ColumnDefinition Width="98*"></ColumnDefinition>
-                            <ColumnDefinition Width="102*"></ColumnDefinition>
-                            <ColumnDefinition Width="86*"></ColumnDefinition>
+                            <ColumnDefinition Width="69*"></ColumnDefinition>
+                            <ColumnDefinition Width="119*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="27.2"></RowDefinition>
@@ -91,8 +91,8 @@
                             <ui:TextBox Width="335" Icon="Search20" PlaceholderText="Search for songs " IconForeground="#fff" x:Name="search_tb" Height="60" />
 
                         </WrapPanel>
-                        <ui:Button x:Name="Xbutton"  Visibility="Visible" BorderBrush="Transparent" Background="#1212" Grid.Column="5" Content="x" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56" Width="66"  Grid.Row="1" FontWeight="Normal" Click="Button_Click"/>
-                        <ui:Button x:Name="Findmore" Visibility="Hidden" BorderBrush="Transparent" Background="#1212" Grid.Column="5" Content="Find more" FontSize="15" Height="65" Width="144" Grid.Row="1" FontWeight="Bold" Click="Findmore_Click" />
+                        <ui:Button x:Name="Xbutton"  Visibility="Visible" BorderBrush="Transparent" Background="Transparent" Grid.Column="5" Content="x" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56" Width="58" FontWeight="Normal" Click="Button_Click" Margin="0,27,0,0" Grid.RowSpan="2"/>
+                        <ui:Button x:Name="Findmore" Visibility="Hidden" BorderBrush="Transparent" Background="#1212" Grid.Column="5" Content="Find more" FontSize="15" Height="65" Width="144" Grid.Row="1" FontWeight="Bold" Click="Findmore_Click" Margin="4,0,0,0" />
                     </Grid>
                 </Grid>
             </ScrollViewer>
