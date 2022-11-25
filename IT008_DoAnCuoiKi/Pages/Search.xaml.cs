@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static IT008_DoAnCuoiKi.Data.Models.MSearch;
 using IT008_DoAnCuoiKi.Data.Models;
+using System.ComponentModel;
 
 namespace IT008_DoAnCuoiKi.Pages
 {
@@ -27,57 +28,112 @@ namespace IT008_DoAnCuoiKi.Pages
         public Search()
         {
             InitializeComponent();
+            songs_visibility.Visibility = Visibility.Hidden;
         }
+
+
+        public enum Type
+        {
+            [Description("Artists")]
+            Artists,
+            [Description("Tracks")]
+            Tracks,
+            [Description("Albums")]
+            Albums,
+            [Description("Playlists")]
+            Playlists
+        }
+
+
 
         private void btn_search_Click(object sender, RoutedEventArgs e)
         {
             if (search_tb.Text == string.Empty)
             {
                 MessageBox.Show("Please type something!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                SearchResult.ItemsSource = null;
                 return;
             }
-            ComboBoxItem dropdown_item = dropdown.SelectedItem as ComboBoxItem;
-            string type = dropdown_item.Content.ToString().ToLower();
-            if (type.CompareTo("choose type") == 0)
+            try
             {
-                MessageBox.Show("Please choose type!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                SearchResult.ItemsSource = null;
-                return;
-            }
-            SpotifyResult res = RSearch.SearchByType(search_tb.Text, type);
-            if (res != null)
-            {
-                switch (type)
+                songs_visibility.Visibility = Visibility.Visible;
+                artists_title.Text = Type.Artists.ToString();
+                tracks_title.Text = Type.Tracks.ToString();
+                albums_title.Text = Type.Albums.ToString();
+                playlists_title.Text = Type.Playlists.ToString();
+                List<ArtistItem> listArtists = RSearch.SearchByType(search_tb.Text, "artist").artists.items;
+                List<TracksItem> listTracks = RSearch.SearchByType(search_tb.Text, "track").tracks.items;
+                List<AlbumsItem> listAlbums = RSearch.SearchByType(search_tb.Text, "album").albums.items;
+                List<PlaylistsItem> listPlaylists = RSearch.SearchByType(search_tb.Text, "playlist").playlists.items;
+                foreach (var item in listTracks)
                 {
-                    case "artist":
-                        var listArtist = new List<ArtistItem>();
-                        foreach (var item in res?.artists.items)
-                            listArtist.Add(item);
-                        SearchResult.ItemsSource = listArtist;
-                        break;
-                    case "track":
-                        var listTrack = new List<TracksItem>();
-                        foreach (var item in res?.tracks.items)
-                            listTrack.Add(item);
-                        SearchResult.ItemsSource = listTrack;
-                        break;
-                    case "album":
-                        var listAlbum = new List<AlbumsItem>();
-                        foreach (var item in res?.albums.items)
-                            listAlbum.Add(item);
-                        SearchResult.ItemsSource = listAlbum;
-                        break;
-                    case "playlist":
-                        var listPlaylist = new List<PlaylistsItem>();
-                        foreach (var item in res?.playlists.items)
-                            listPlaylist.Add(item);
-                        SearchResult.ItemsSource = listPlaylist;
-                        break;
-                    default:
-                        return; 
+                    int o = (int)item.duration_ms / 60000;
+                    double t = Convert.ToDouble(item.duration_ms) / 60000.0;
+                    double r = t - o;
+                    int s = (int)(r * 60);
+                    item.duration_string = o.ToString() + ":" + (s < 10 ? "0" : "") + s.ToString();
                 }
+                ArtistResult.ItemsSource = listArtists;
+                TrackResult.ItemsSource = listTracks;
+                AlbumResult.ItemsSource = listAlbums;
+                PlaylistResult.ItemsSource = listPlaylists;
+                List<TracksItem> trackItem = new List<TracksItem>
+                {
+                    listTracks[0]
+                };
+                top_result.ItemsSource = trackItem;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            //if (res != null)
+            //{
+            //    switch (type)
+            //    {
+            //        case "artist":
+            //            var listArtist = new List<ArtistItem>();
+            //            foreach (var item in res?.artists.items)
+            //                listArtist.Add(item);
+            //            ArtistResult.ItemsSource = listArtist;
+            //            break;
+            //        case "track":
+            //            var listTrack = new List<TracksItem>();
+            //            foreach (var item in res?.tracks.items)
+            //                listTrack.Add(item);
+            //            TrackResult.ItemsSource = listTrack;
+            //            break;
+            //        case "album":
+            //            var listAlbum = new List<AlbumsItem>();
+            //            foreach (var item in res?.albums.items)
+            //                listAlbum.Add(item);
+            //            AlbumResult.ItemsSource = listAlbum;
+            //            break;
+            //        case "playlist":
+            //            var listPlaylist = new List<PlaylistsItem>();
+            //            foreach (var item in res?.playlists.items)
+            //                listPlaylist.Add(item);
+            //            PlaylistResult.ItemsSource = listPlaylist;
+            //            break;
+            //        default:
+            //            return;
+            //    }
+            //}
+        }
+
+        private void card_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Wpf.Ui.Controls.Card)sender).Background = Brushes.Gray;
+        }
+
+        private void card_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Wpf.Ui.Controls.Card)sender).Background = Brushes.Black;
+        }
+
+        private void search_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                this.btn_search_Click(sender, e);
         }
     }
 }

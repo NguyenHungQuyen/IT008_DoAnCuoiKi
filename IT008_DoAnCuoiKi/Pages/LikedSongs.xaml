@@ -4,9 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:IT008_DoAnCuoiKi.Pages.LikedSongsPage" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" xmlns:viewmodel="clr-namespace:IT008_DoAnCuoiKi.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ControlPageViewModel}"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="LikedSongs">
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="LikedSongs" Height="745">
 
     <Grid>
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -19,7 +18,13 @@
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid Background="#8D72E1">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                            <GradientStop Color="#8D72E1" Offset="0.3" />
+                            <GradientStop Color="#0f0f0f" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition Width="16"></ColumnDefinition>

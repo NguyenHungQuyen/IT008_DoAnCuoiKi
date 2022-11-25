@@ -110,7 +110,9 @@
     <Compile Include="Data\API\RCategory.cs" />
     <Compile Include="Data\API\RTrack.cs" />
     <Compile Include="Data\Models\BaseModel.cs" />
+    <Compile Include="Data\Models\BrowseResult.cs" />
     <Compile Include="Data\Models\MCategory.cs" />
+    <Compile Include="Data\Models\MSearch.cs" />
     <Compile Include="Data\Models\SpotifyResult.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlPageViewModel.cs" />
@@ -135,7 +137,6 @@
     <Compile Include="Data\Models\MArtists.cs" />
     <Compile Include="Data\Models\MCurrentUser.cs" />
     <Compile Include="Data\Models\MPlaylists.cs" />
-    <Compile Include="Data\Models\MSearch.cs" />
     <Compile Include="Data\Models\MProfile.cs" />
     <Compile Include="Data\Models\MTracks.cs" />
     <Compile Include="MainWindow.xaml.cs">

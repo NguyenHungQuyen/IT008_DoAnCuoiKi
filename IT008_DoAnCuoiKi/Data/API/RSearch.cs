@@ -19,9 +19,10 @@ namespace IT008_DoAnCuoiKi.Data.API
     {
         public static SpotifyResult SearchByType(string search_word, string type)
         {
+            int limit = type != "track" ? 10 : 4;
             var client = new RestClient("https://api.spotify.com/v1/search");
             client.AddDefaultHeader("Authorization", $"Bearer {TokenString.AccessToken}");
-            var request = new RestRequest($"?q={search_word}&type={type}&limit=50&market=VN", Method.Get);
+            var request = new RestRequest($"?q={search_word}&type={type}&limit={limit}&market=VN", Method.Get);
             try
             {
                 var response = client.Execute(request);

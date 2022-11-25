@@ -11,52 +11,175 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="1" VerticalAlignment="Center">
-            <ui:TextBox Width="300" Grid.Column="0" Icon="Search20" PlaceholderText="What do you want to listen?" IconForeground="#fff" x:Name="search_tb" />
-            <ComboBox Margin="20,0" x:Name="dropdown">
-                <ComboBoxItem IsSelected="True">Choose type</ComboBoxItem>
-                <ComboBoxItem>Artist</ComboBoxItem>
-                <ComboBoxItem>Album</ComboBoxItem>
-                <ComboBoxItem>Track</ComboBoxItem>
-                <ComboBoxItem>Playlist</ComboBoxItem>
-            </ComboBox>
-            <ui:Button Content="Search" Background="#1DD05D" x:Name="btn_search" Click="btn_search_Click" />
+            <ui:TextBox Width="300" Grid.Column="0" Icon="Search20" PlaceholderText="What do you want to listen?" IconForeground="#fff" x:Name="search_tb" KeyDown="search_tb_KeyDown" />
+            <ui:Button Content="Search" Background="#1DD05D" x:Name="btn_search" Height="{Binding ActualHeight, ElementName=search_tb}" Click="btn_search_Click" Margin="10,0,0,0" />
         </WrapPanel>
-
-        <TextBlock Grid.Row="2" Text="{Binding songName}" FontSize="20" FontWeight="Bold" Foreground="#fff" HorizontalAlignment="Left"/>
-        <ScrollViewer Grid.Row="3">
-        <VirtualizingStackPanel IsVirtualizing="True" VirtualizationMode="Recycling" Grid.Row="3">
-        <ListView x:Name="SearchResult" Grid.Row="3" HorizontalContentAlignment="Left" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <ui:Card Padding="0" ClipToBounds="True">
-                        <StackPanel Uid="{Binding id}" Tag="{Binding id}" ToolTip="{Binding id}" ClipToBounds="True">
-                            <Image Source="{Binding images[0].url}" Width="200" Height="200" ClipToBounds="True"/>
-                            <TextBlock Text="{Binding name}" TextWrapping="Wrap" />
-                            <TextBlock Text="{Binding popularity}" TextWrapping="Wrap" />
-                            <TextBlock Text="{Binding followers.total}" TextWrapping="Wrap"/>
-                            <TextBlock Text="{Binding id}" TextWrapping="Wrap"/>
-                            <ui:Hyperlink NavigateUri="{Binding external_urls.spotify}">Spotify Profile</ui:Hyperlink>
-                        </StackPanel>
-                    </ui:Card>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListView>
-        </VirtualizingStackPanel>
-        <!--<Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition  />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            
-        </Grid>-->
+        <ScrollViewer Grid.Row="2">
+            <VirtualizingStackPanel
+                Margin="18,0,18,18"
+                IsVirtualizing="True"
+                VirtualizationMode="Recycling">
+                <Grid x:Name="songs_visibility">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="top_result" Grid.Column="0" VerticalAlignment="Bottom">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Bottom">
+                                    <Image HorizontalAlignment="Left" Source="{Binding album.images[0].url}" Width="80" Height="80" />
+                                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="36" TextTrimming="CharacterEllipsis"/>
+                                    <WrapPanel VerticalAlignment="Bottom">
+                                        <TextBlock Text="{Binding artists[0].name}" VerticalAlignment="Center" FontSize="14" Foreground="LightGray" />
+                                        <ui:Badge Appearance="Transparent" Margin="10,0,0,0">
+                                            <TextBlock Text="{Binding type}" FontSize="14" Foreground="#fff"/>
+                                        </ui:Badge>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListBox ItemsSource="{Binding ElementName=TrackResult,Path=ItemsSource}" Grid.Column="1"  Margin="10,0,0,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Source="{Binding album.images[0].url}" Width="50" Height="50" />
+                                    <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Stretch">
+                                        <TextBlock Text="{Binding name}"  FontWeight="DemiBold" FontSize="14"/>
+                                        <TextBlock Text="{Binding artists[0].name}" Foreground="LightGray" VerticalAlignment="Bottom" FontSize="12" />
+                                    </StackPanel>
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Text="{Binding duration_string}" Foreground="LightGray" FontWeight="DemiBold" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Grid Margin="0,24,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="" Foreground="#fff" Grid.Row="0" x:Name="artists_title" FontWeight="Bold" FontSize="20" />
+                    <ItemsControl Margin="4,0,4,0" x:Name="ArtistResult" Grid.Row="1" Height="auto">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="6" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ui:Card Background="Black" Margin="4" Cursor="Hand" x:Name="card" MouseLeave="card_MouseLeave" MouseEnter="card_MouseEnter" Height="300">
+                                    <StackPanel>
+                                        <Ellipse Width="Auto" Height="{Binding ActualWidth, ElementName=image}" x:Name="image" Margin="0,0,0,5">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding images[0].url}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Text="{Binding name}" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" />
+                                        <TextBlock Text="{Binding type}" />
+                                    </StackPanel>
+                                </ui:Card>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+                <Grid Margin="0,24,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="" Foreground="#fff" Grid.Row="0" x:Name="tracks_title" FontWeight="Bold" FontSize="20" />
+                    <ItemsControl Margin="4,0,4,0" x:Name="TrackResult" Height="auto" Grid.Row="1">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="6" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ui:Card Background="Black" Margin="4" Cursor="Hand" x:Name="card" MouseLeave="card_MouseLeave" MouseEnter="card_MouseEnter" Height="300">
+                                    <StackPanel>
+                                        <Ellipse Width="Auto" Height="{Binding ActualWidth, ElementName=image}" x:Name="image" Margin="0,0,0,5">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding album.images[0].url}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Text="{Binding name}" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" />
+                                        <TextBlock Text="{Binding type}" />
+                                    </StackPanel>
+                                </ui:Card>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+                <Grid Margin="0,24,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="" Foreground="#fff" Grid.Row="0" x:Name="albums_title" FontWeight="Bold" FontSize="20" />
+                    <ItemsControl Margin="4,0,4,0" x:Name="AlbumResult" Height="auto" Grid.Row="1">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="6" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ui:Card Background="Black" Margin="4" Cursor="Hand" x:Name="card" MouseLeave="card_MouseLeave" MouseEnter="card_MouseEnter" Height="300">
+                                    <StackPanel>
+                                        <Ellipse Width="Auto" Height="{Binding ActualWidth, ElementName=image}" x:Name="image" Margin="0,0,0,5">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding images[0].url}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Text="{Binding name}" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" />
+                                        <TextBlock Text="{Binding type}" />
+                                    </StackPanel>
+                                </ui:Card>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+                <Grid Margin="0,24,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="" Foreground="#fff" Grid.Row="0" x:Name="playlists_title" FontWeight="Bold" FontSize="20" />
+                    <ItemsControl Margin="4,0,4,0" x:Name="PlaylistResult" Height="auto" Grid.Row="1">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="6" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ui:Card Background="Black" Margin="4" Cursor="Hand" x:Name="card" MouseLeave="card_MouseLeave" MouseEnter="card_MouseEnter">
+                                    <StackPanel>
+                                        <Ellipse Width="Auto" Height="{Binding ActualWidth, ElementName=image}" x:Name="image" Margin="0,0,0,5">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding images[0].url}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Text="{Binding name}" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" />
+                                        <TextBlock Text="{Binding type}" />
+                                    </StackPanel>
+                                </ui:Card>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </VirtualizingStackPanel>
         </ScrollViewer>
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ namespace IT008_DoAnCuoiKi.Data.Models
     {
         public AlbumsItem album { get; set; }
         public List<string> available_markets { get; set; }
+        public List<ArtistItem> artists { get; set; }
         public int disc_number { get; set; }
         public Int64 duration_ms { get; set; }
         public bool is_local { get; set; }
@@ -20,6 +21,7 @@ namespace IT008_DoAnCuoiKi.Data.Models
         public int track_number { get; set; }
         public string type { get; set; }
         public string uri { get; set; }
+        public string duration_string { get; set; }
     }
     public class MTracks : BaseSearch
     {

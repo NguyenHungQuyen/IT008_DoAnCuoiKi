@@ -20,15 +20,11 @@ namespace IT008_DoAnCuoiKi.Data.Models
 
     public class ImageSP
     {
-        public int width { get; set; }
         public string url { get; set; }
-        public int height { get; set; }
     }
 
     public class Icons
     {
-        public int width { get; set; }
-        public int height { get; set; }
         public string url { get; set; }
     }
 
