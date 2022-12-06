@@ -27,7 +27,7 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="top_result" Grid.Column="0" VerticalAlignment="Bottom">
+                    <ListView x:Name="top_result" Grid.Column="0" VerticalAlignment="Bottom" SelectionChanged="top_result_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel VerticalAlignment="Bottom">
@@ -43,7 +43,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <ListBox ItemsSource="{Binding ElementName=TrackResult,Path=ItemsSource}" Grid.Column="1"  Margin="10,0,0,0">
+                    <ListBox x:Name="tracks_result" SelectionChanged="tracks_selected"  ItemsSource="{Binding ElementName=TrackResult,Path=ItemsSource}" Grid.Column="1"  Margin="10,0,0,0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>

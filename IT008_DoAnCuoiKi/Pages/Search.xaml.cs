@@ -17,6 +17,11 @@ using System.Windows.Shapes;
 using static IT008_DoAnCuoiKi.Data.Models.MSearch;
 using IT008_DoAnCuoiKi.Data.Models;
 using System.ComponentModel;
+using System.Collections;
+//using Newtonsoft.Json;
+using System.Text.Json;
+using RestSharp.Serializers.Json;
+using System.IO;
 
 namespace IT008_DoAnCuoiKi.Pages
 {
@@ -135,5 +140,47 @@ namespace IT008_DoAnCuoiKi.Pages
             if (e.Key == Key.Enter)
                 this.btn_search_Click(sender, e);
         }
+
+        private void top_result_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                TracksItem tracksItem;
+                tracksItem = top_result.SelectedItem as TracksItem;
+                string s = "";
+                s = tracksItem.preview_url;
+                MessageBox.Show(s);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void tracks_selected(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                TracksItem tracksItem;
+                tracksItem = tracks_result.SelectedItem as TracksItem;
+                var options = new JsonSerializerOptions { WriteIndented = true };
+
+                string jsonString = "";
+                jsonString = JsonSerializer.Serialize(tracksItem,options);
+
+                using (StreamWriter sw = new StreamWriter("Data1.txt"))
+                {
+                    sw.WriteLine(jsonString);
+                    sw.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
     }
 }
