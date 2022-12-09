@@ -22,6 +22,8 @@ using System.Collections;
 using System.Text.Json;
 using RestSharp.Serializers.Json;
 using System.IO;
+using System.Net;
+using Microsoft.Win32;
 
 namespace IT008_DoAnCuoiKi.Pages
 {
@@ -163,24 +165,34 @@ namespace IT008_DoAnCuoiKi.Pages
             {
                 TracksItem tracksItem;
                 tracksItem = tracks_result.SelectedItem as TracksItem;
-                var options = new JsonSerializerOptions { WriteIndented = true };
 
+                var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = "";
-                jsonString = JsonSerializer.Serialize(tracksItem,options);
+                jsonString = JsonSerializer.Serialize(tracksItem, options);
 
                 using (StreamWriter sw = new StreamWriter("Data1.txt"))
                 {
                     sw.WriteLine(jsonString);
                     sw.Close();
                 }
+                WebClient webClient = new WebClient();
+                string s = "";
+
+                s = tracksItem.preview_url;
+                webClient.DownloadFile(s, "anc.mp3");
+                App.MediaPlayer.Open(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, "anc.mp3")));
+                App.MediaPlayer.Play();
+
+                
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+
             }
         }
-
-
     }
+
+    
 }

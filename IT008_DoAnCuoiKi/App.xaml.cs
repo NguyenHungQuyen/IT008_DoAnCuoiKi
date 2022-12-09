@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace IT008_DoAnCuoiKi
 {
@@ -18,7 +19,8 @@ namespace IT008_DoAnCuoiKi
         public App()
         {
             Task.Run(async () => await Auth.GetToken());
-
+            MediaPlayer = new MediaPlayer();
         }
+        public static MediaPlayer MediaPlayer;
     }
 }

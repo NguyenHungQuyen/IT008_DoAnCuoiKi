@@ -114,6 +114,9 @@
     <Compile Include="Data\Models\MCategory.cs" />
     <Compile Include="Data\Models\MSearch.cs" />
     <Compile Include="Data\Models\SpotifyResult.cs" />
+    <Compile Include="Queue_Result.xaml.cs">
+      <DependentUpon>Queue_Result.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlPageViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -186,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PlayListThing\ViewArtists.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Queue_Result.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

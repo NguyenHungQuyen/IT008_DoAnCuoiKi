@@ -12,10 +12,35 @@
       Title="Queue">
 
     <Grid>
-        <Canvas Width="50" Height="50" Margin="50,50,50,200"  
+
+        <Grid x:Name="grid_track" Visibility="Hidden">
+            <ListBox  Visibility="Visible" x:Name="queue_tracks_result" SelectionChanged="queue_tracks_selected" Grid.Column="1"  Margin="10,0,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding album.images[0].url}" Width="50" Height="50" />
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Stretch">
+                                <TextBlock Text="{Binding name}"  FontWeight="DemiBold" FontSize="14"/>
+                                <TextBlock Text="{Binding artists[0].name}" Foreground="LightGray" VerticalAlignment="Bottom" FontSize="12" />
+                            </StackPanel>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Text="{Binding duration_string}" Foreground="LightGray" FontWeight="DemiBold" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+        </Grid>
+        <Grid x:Name="grid_icon" Visibility="Visible">
+            <Canvas Width="50" Height="50" Margin="50,50,50,200"  
             VerticalAlignment="Center"
                 HorizontalAlignment="Center">
-            <Path  Data="M48.095 41.4707C48.095 41.2892 47.9421 
+                <Path  Data="M48.095 41.4707C48.095 41.2892 47.9421 
                    41.1531 47.7513 41.1531C43.7911 41.1531 6.28846 
                    41.1531 2.32826 41.1531C2.14695 41.1531 1.99426
                    41.2892 1.99426 41.4707C1.99426 42.4144 1.99426 
@@ -40,8 +65,8 @@
                    Height="50" Width="50" Fill="#FFA1A59B" 
         />
 
-        </Canvas>
-        <Label Content="Add to your Queue" 
+            </Canvas>
+            <Label Content="Add to your Queue" 
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="25"
@@ -49,7 +74,7 @@
                Background="Transparent" Foreground="White"
               
                ></Label>
-        <Label Content="Tap Add to Queue from a track's menu to see it here"
+            <Label Content="Tap Add to Queue from a track's menu to see it here"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                
@@ -58,10 +83,10 @@
                Margin="0,190,0,100"
                ></Label>
 
-        <Grid Width="250"
+            <Grid Width="250"
               Margin="200,200,200,2">
-            <!--<Border CornerRadius="20" Background="White" Height="40" >-->
-            <ui:Button Background="White"
+                <!--<Border CornerRadius="20" Background="White" Height="40" >-->
+                <ui:Button Background="White"
                            Icon="Search28"
                            IconForeground="#000"
                     HorizontalAlignment="Center"
@@ -74,8 +99,9 @@
                            MouseOverBorderBrush="#000"
                        Click="find_st_to_play_Click"
                            >
-            </ui:Button>
-            <!--</Border>-->
+                </ui:Button>
+                <!--</Border>-->
+            </Grid>
         </Grid>
     </Grid>
     <!--<Grid>

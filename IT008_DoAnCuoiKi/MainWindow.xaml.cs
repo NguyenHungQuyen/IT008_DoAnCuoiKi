@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -70,7 +71,27 @@ namespace IT008_DoAnCuoiKi
         private void queue_Click(object sender, RoutedEventArgs e)
         {
             sidebar.SelectedItem = null;
-            navframe.Navigate(new Queue());
+
+            try
+            {
+                navframe.Navigate(new Queue());
+                //navframe.Navigate(new Queue_Result());
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void SymbolIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            App.MediaPlayer.Pause();
+        }
+
+        private void SymbolIcon_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            App.MediaPlayer.Play();
         }
     }
 }
