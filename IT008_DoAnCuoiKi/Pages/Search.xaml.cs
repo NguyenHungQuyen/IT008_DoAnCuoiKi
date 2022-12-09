@@ -170,17 +170,26 @@ namespace IT008_DoAnCuoiKi.Pages
                 string jsonString = "";
                 jsonString = JsonSerializer.Serialize(tracksItem, options);
 
-                using (StreamWriter sw = new StreamWriter("Data1.txt"))
+                using (StreamWriter sw = File.AppendText("Data1.txt"))
                 {
                     sw.WriteLine(jsonString);
                     sw.Close();
                 }
+
+                /*  using (StreamWriter sw = new StreamWriter("Data1.txt"))
+                  {
+                      sw.WriteLine(jsonString);
+                      sw.Close();
+                  }*/
                 WebClient webClient = new WebClient();
                 string s = "";
 
+                string namefile = "";
+                namefile = tracksItem.name + ".mp3";
                 s = tracksItem.preview_url;
-                webClient.DownloadFile(s, "anc.mp3");
-                App.MediaPlayer.Open(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, "anc.mp3")));
+
+                webClient.DownloadFile(s, namefile);
+                App.MediaPlayer.Open(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory,namefile)));
                 App.MediaPlayer.Play();
 
                 

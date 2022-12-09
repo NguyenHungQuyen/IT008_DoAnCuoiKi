@@ -34,11 +34,12 @@ namespace IT008_DoAnCuoiKi.Pages
             var result = JsonConvert.DeserializeObject<TracksItem>(s);
             List<TracksItem> listTracks = new List<TracksItem> { result };
             queue_tracks_result.ItemsSource = listTracks;
+
+
         }
 
         private void find_st_to_play_Click(object sender, RoutedEventArgs e)
         {
-            
             this.NavigationService.Navigate(new Search());
         }
         private void queue_tracks_selected(object sender, SelectionChangedEventArgs e)
